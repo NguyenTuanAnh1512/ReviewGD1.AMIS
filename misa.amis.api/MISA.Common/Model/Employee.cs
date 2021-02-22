@@ -7,8 +7,8 @@ namespace MISA.Common.Model
 {
     /// <summary>
     /// Nhân viên
-    /// CreatedBy: NTANH (07/02/2021)
     /// </summary>
+    /// CreatedBy: NTANH (21/02/2021)
     public class Employee
     {
         #region Contructor

@@ -26,10 +26,10 @@ namespace MISA.CukCuk.Api.Controllers
 
         #region Method
         /// <summary>
-        /// Lấy dữ liệu
+        /// Lấy toàn bộ dữ liệu
         /// </summary>
         /// <returns>Collection Object</returns>
-        /// CreatedBy: NTANH (08/02/2021)
+        /// CreatedBy: NTANH (21/02/2021)
         [HttpGet]
         public IActionResult Get()
         {
@@ -45,6 +45,11 @@ namespace MISA.CukCuk.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Lấy toàn bộ Code của bảng
+        /// </summary>
+        /// <returns>mảng các Code</returns>
+        /// CreatedBy: NTANH (21/02/2021)
         [HttpGet("GetCode")]
         public IActionResult GetCode()
         {
@@ -60,7 +65,12 @@ namespace MISA.CukCuk.Api.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Tìm kiếm theo Mã và Tên
+        /// </summary>
+        /// <param name="str">xâu cần tìm kiếm</param>
+        /// <returns>mảng các đối tượng phù hợp</returns>
+        /// CreatedBy: NTANH (21/02/2021)
         [HttpGet("SearchByCodeAndName")]
         public IActionResult SearchByCodeAndName(string str)
         {
@@ -81,7 +91,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// </summary>
         /// <param name="entity">Kiểu của Object cần thêm</param>
         /// <returns>Số bản ghi được thêm</returns>
-        /// CreatedBy: NTANH (08/02/2021)
+        /// CreatedBy: NTANH (21/02/2021)
         [HttpPost]
         public IActionResult Post(MISAEntity entity)
         {   
@@ -100,7 +110,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// </summary>
         /// <param name="entity">đối tượng cần cập nhật</param>
         /// <returns>Số bản ghi bị ảnh hưởng</returns>
-        /// CreatedBy: NTANH (20/02/2021)
+        /// CreatedBy: NTANH (21/02/2021)
         [HttpPut]
         public IActionResult Put(MISAEntity entity)
         {
@@ -119,7 +129,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// </summary>
         /// <param name="entity">Đối tượng cần xóa</param>
         /// <returns>Số bản ghi bị ảnh hưởng</returns>
-        /// CreatedBy: NTANH (20/02/2021)
+        /// CreatedBy: NTANH (21/02/2021)
         [HttpDelete]
         public IActionResult Delete(MISAEntity entity)
         {

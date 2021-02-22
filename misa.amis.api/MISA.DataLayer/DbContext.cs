@@ -10,6 +10,11 @@ using System.Text;
 
 namespace MISA.DataLayer
 {
+    /// <summary>
+    /// Base DbContext, có nhiệm vụ kết nối và làm việc với DB
+    /// </summary>
+    /// <typeparam name="MISAEntity">kiểu chung của đối tượng</typeparam>
+    /// CreatedBy: NTANH (21/02/2021)
     public class DbContext<MISAEntity>:IBaseData<MISAEntity>
     {
         #region DECLARE
@@ -29,27 +34,12 @@ namespace MISA.DataLayer
         /// Hàm lấy toàn bộ dữ liệu
         /// </summary>
         /// <returns>Collection Object</returns>
-        /// CreatedBy: NTANH (08/02/2021)
+        /// CreatedBy: NTANH (21/02/2021)
         public IEnumerable<MISAEntity> GetAll()
         {
             var className = typeof(MISAEntity).Name;
             // Thực thi truy vấn lấy dữ liệu
             var entities = _dbConnection.Query<MISAEntity>($"Proc_Get{className}s", commandType: CommandType.StoredProcedure);
-            // trả về kết quả cho Client:
-            return entities;
-        }
-
-        /// <summary>
-        /// Hàm Lấy dữ liệu theo sqlCommand
-        /// </summary>
-        /// <param name="sqlCommand">Câu sql hoặc tên Store</param>
-        /// <param name="commandType">kiểu của sqlCommand (Text hoặc Store)</param>
-        /// <returns>Collection Object</returns>
-        /// CreatedBy: NTANH (08/02/2021)
-        public IEnumerable<MISAEntity> GetAll(string sqlCommand, CommandType commandType = CommandType.Text)
-        {
-            // Thực thi truy vấn lấy dữ liệu
-            var entities = _dbConnection.Query<MISAEntity>(sqlCommand, commandType: commandType);
             // trả về kết quả cho Client:
             return entities;
         }
@@ -78,7 +68,8 @@ namespace MISA.DataLayer
         /// <summary>
         /// Hàm lấy toàn bộ Mã trong Database (VD: EmployeeCode, CustomerCodeCode)
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Colection Object</returns>
+        /// CreatedBy: NTANH (21/02/2021)
         public List<string> GetCode()
         {
             var className = typeof(MISAEntity).Name;
@@ -93,7 +84,7 @@ namespace MISA.DataLayer
         /// </summary>
         /// <param name="str">Chuỗi kí tự muốn tìm</param>
         /// <returns>các bản ghi có Code hoặc Name chứa chuỗi kí tự muốn tìm</returns>
-        /// CreatedBy: NTANH (22/02/2021)
+        /// CreatedBy: NTANH (21/02/2021)
         public IEnumerable<MISAEntity> SearchByCodeAndName(string str)
         {
             var className = typeof(MISAEntity).Name;
@@ -108,7 +99,7 @@ namespace MISA.DataLayer
         /// </summary>
         /// <param name="entity">object cần thêm mới</param>
         /// <returns>số lượng bản ghi thêm được vào database</returns>
-        /// CreatedBy: NTANH (07/01/2021)
+        /// CreatedBy: NTANH (21/02/2021)
         public int InsertObject(MISAEntity entity)
         {
             var className = typeof(MISAEntity).Name;
@@ -141,7 +132,7 @@ namespace MISA.DataLayer
         /// </summary>
         /// <param name="entity">obj cần cập nhật</param>
         /// <returns>số lượng bản ghi bị thay đổi trong database</returns>
-        /// CreatedBy: NTANH (20/01/2021)
+        /// CreatedBy: NTANH (21/02/2021)
         public int UpdateObject(MISAEntity entity)
         {
 
@@ -171,7 +162,7 @@ namespace MISA.DataLayer
         /// </summary>
         /// <param name="entity">Đối tượng cần xóa</param>
         /// <returns>Số bản ghi bị ảnh hưởng trong Database</returns>
-        /// CreatedBy: NTANH (20/02/2021)
+        /// CreatedBy: NTANH (21/02/2021)
         public int DeleteObject(MISAEntity entity)
         {
 

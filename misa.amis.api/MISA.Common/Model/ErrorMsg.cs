@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 
 namespace MISA.Common.Model
 {
+    /// <summary>
+    /// Thông báo lỗi trả về cho Client khi có lỗi
+    /// </summary>
+    /// CreatedBy: NTANH (21/02/2021)
     public class ErrorMsg
     {
         /// <summary>

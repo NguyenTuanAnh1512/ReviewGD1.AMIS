@@ -7,7 +7,7 @@ namespace MISA.Common.Model
     /// <summary>
     /// Đơn vị
     /// </summary>
-    /// CreatedBy: NTANH (20/02/2021)
+    /// CreatedBy: NTANH (21/02/2021)
     public class Department
     {
         #region Constructor

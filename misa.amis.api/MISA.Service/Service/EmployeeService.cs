@@ -21,7 +21,7 @@ namespace MISA.Service
         /// <param name="employee">Đối tượng cần validate</param>
         /// <param name="errorMsg">errorMsg muốn truyền về</param>
         /// <returns>true - hợp lệ; false - không hợp lệ</returns>
-        /// CreatedBy: NTANH (08/02/2021)
+        /// CreatedBy: NTANH (21/02/2021)
         protected override bool ValidateInsert(Employee employee, ErrorMsg errorMsg)
         {
             var serviceResult = new ServiceResult();
@@ -43,15 +43,7 @@ namespace MISA.Service
                 errorMsg.UserMsg = MISA.Common.Properties.Resources.ErrorService_EmptyFullName;
                 isValid = false;
             }
-            // - Kiểm tra bắt buộc nhập số CMT
-            //if (employee.IdentifyNumber == null || employee.IdentifyNumber.Trim() == string.Empty)
-            //{
-            //    errorMsg.DevMsg = MISA.Common.Properties.Resources.ErrorService_EmptyIdentifyNumber;
-            //    errorMsg.UserMsg = MISA.Common.Properties.Resources.ErrorService_EmptyIdentifyNumber;
-            //    isValid = false;
-            //}
-
-
+            
             // 2. validate dữ liệu không được phép trùng: (mã nhân viên, số CMT)
             // - kiểm tra trong DB đã tồn tại mã nhân viên hay chưa
             var isExist = dbContext.CheckEmployeeCodeExist(employee.EmployeeCode);
@@ -81,7 +73,7 @@ namespace MISA.Service
         /// <param name="employee">đối tượng cần validate</param>
         /// <param name="errorMsg">câu thông báo lỗi trả về</param>
         /// <returns>true - hợp lệ ; false - không hợp lệ</returns>
-        /// CreatedBy: NTANH (20/02/2021)
+        /// CreatedBy: NTANH (21/02/2021)
         protected override bool ValidateUpdate(Employee employee, ErrorMsg errorMsg)
         {
             var serviceResult = new ServiceResult();
@@ -103,31 +95,7 @@ namespace MISA.Service
                 errorMsg.UserMsg = MISA.Common.Properties.Resources.ErrorService_EmptyFullName;
                 isValid = false;
             }
-            // - Kiểm tra bắt buộc nhập số CMT
-            //if (employee.IdentifyNumber == null || employee.IdentifyNumber.Trim() == string.Empty)
-            //{
-            //    errorMsg.DevMsg = MISA.Common.Properties.Resources.ErrorService_EmptyIdentifyNumber;
-            //    errorMsg.UserMsg = MISA.Common.Properties.Resources.ErrorService_EmptyIdentifyNumber;
-            //    isValid = false;
-            //}
-
-            // - kiểm tra trong DB đã tồn tại số CMT hay chưa
-            //var isExist = dbContext.CheckIdentifyNumberExist(employee.IdentifyNumber);
-            //isExist = dbContext.CheckIdentifyNumberExist(employee.IdentifyNumber);
-            //if (isExist == true)
-            //{
-            //    errorMsg.DevMsg = MISA.Common.Properties.Resources.ErrorService_DuplicateIdentifyNumber;
-            //    errorMsg.UserMsg = MISA.Common.Properties.Resources.ErrorService_DuplicateIdentifyNumber;
-            //    isValid = false;
-            //}
-
-
-            //if (isExist == true)
-            //{
-            //    errorMsg.DevMsg = MISA.Common.Properties.Resources.ErrorService_DuplicateEmployeeCode;
-            //    errorMsg.UserMsg = MISA.Common.Properties.Resources.ErrorService_DuplicateEmployeeCode;
-            //    isValid = false;
-            //}
+            
             return isValid;
         }
     }

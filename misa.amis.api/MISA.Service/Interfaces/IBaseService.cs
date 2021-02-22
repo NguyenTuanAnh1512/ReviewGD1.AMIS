@@ -5,6 +5,11 @@ using System.Text;
 
 namespace MISA.Service.Interfaces
 {
+    /// <summary>
+    /// Interface của BaseService
+    /// </summary>
+    /// <typeparam name="MISAEntity">Kiểu truyền vào</typeparam>
+    /// CreatedBy: NTANH (21/02/2021)
     public interface IBaseService<MISAEntity>
     {
         ServiceResult GetAll();

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace MISA.Common.Model
 {
+    /// <summary>
+    /// Trả về của Service
+    /// </summary>
     public class ServiceResult
     {
         /// <summary>
