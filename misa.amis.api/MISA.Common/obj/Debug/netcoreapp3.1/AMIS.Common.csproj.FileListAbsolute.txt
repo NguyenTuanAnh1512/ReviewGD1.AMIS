@@ -1,0 +1,11 @@
+D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Common\bin\Debug\netcoreapp3.1\AMIS.Common.deps.json
+D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Common\bin\Debug\netcoreapp3.1\AMIS.Common.dll
+D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Common\bin\Debug\netcoreapp3.1\AMIS.Common.pdb
+D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Common\obj\Debug\netcoreapp3.1\AMIS.Common.csprojAssemblyReference.cache
+D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Common\obj\Debug\netcoreapp3.1\AMIS.Common.Properties.Resources.resources
+D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Common\obj\Debug\netcoreapp3.1\AMIS.Common.csproj.GenerateResource.cache
+D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Common\obj\Debug\netcoreapp3.1\AMIS.Common.AssemblyInfoInputs.cache
+D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Common\obj\Debug\netcoreapp3.1\AMIS.Common.AssemblyInfo.cs
+D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Common\obj\Debug\netcoreapp3.1\AMIS.Common.csproj.CoreCompileInputs.cache
+D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Common\obj\Debug\netcoreapp3.1\AMIS.Common.dll
+D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Common\obj\Debug\netcoreapp3.1\AMIS.Common.pdb
