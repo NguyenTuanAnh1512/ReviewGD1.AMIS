@@ -26,7 +26,7 @@
 import BaseButton from '../../base/BaseButton'
 
 export default {
-  name: 'Popup',
+  name: 'ThePopup',
   props: {
     isHidePopup: Boolean,
   },
@@ -40,11 +40,13 @@ export default {
     }
   },
   methods: {
+    // khi ấn Yes, gọi lệnh xóa và đóng Popup
     btnYesOnClick() {
       this.$parent.deleteEmployee(this.idDel);
       this.$parent.closePopup();
     },
 
+    // khi ấn No, không làm gì và đóng Popup
     btnNoOnClick() {
       this.$parent.closePopup();
     },

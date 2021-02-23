@@ -4,15 +4,15 @@
       <div class="expend-icon"></div>
       <div class="logo-icon"></div>
     </div>
-    <div class="navbar-content">
-      <a v-for="(navItem, index) in navItems" :key="index" class="nav-item">
+      <div class="navbar-content">
+        <a v-for="(navItem, index) in navItems" :key="index" class="nav-item">
           <div 
             class="nav-item-icon"
             :class="navItem.classIcon"
           ></div>
           <div class="nav-item-text">{{ navItem.text }}</div>
-      </a>
-    </div>
+        </a>
+      </div>
   </div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
       navItems: [
         {
           text: 'Tổng quan',
-          classIcon: 'icon-tongquan'
+          classIcon: 'icon-tongquan',
         },
         {
           text: 'Tiền mặt',

@@ -21,8 +21,8 @@ export default {
     haveIcon: Boolean,
   },
   methods: {
+    // Khi ấn vào button thì gọi ra Component cha để xử lý hàm
     btnAddOnClick() {
-      // console.log("ham trong button");
       this.$emit("btnOnClick")
     },
   },

@@ -303,8 +303,7 @@ export default {
     }
   },
   methods: {
-
-
+    // load Employee muốn sửa thông tin vào, format dữ liệu nếu cần
     showDetailUpdate(employee){
       // console.log('employee trong ham showDetail trong Dialog.Vue', employee);
       employee.DateOfBirth = this.formatDate(employee.DateOfBirth);
@@ -312,6 +311,7 @@ export default {
       this.employee = employee;
     },
 
+    // Load EmployeeCode mới vào khi thêm mới
     showDetailInsert(employee){
       // console.log('employee trong ham showDetail trong Dialog.Vue', employee);
       employee.IdentifyNumber = "";
@@ -319,22 +319,27 @@ export default {
       this.employee = employee;
     },
 
+    // đóng Dialog và load lại dữ liệu trong TheContent
     closeDialog() {
       this.$emit('closeDialog');
       this.$parent.loadData();
     },
 
+    // Đóng dialog và load lại data
     btnCancelOnClick() {
       this.$emit('closeDialog');
       this.$parent.loadData();
     },
 
+    // xử lý Sửa nhân viên
     async btnUpdateOnClick() {
+      // check sau khi sửa mà bị trùn EmployeeCode
       if(this.$parent.checkDuplicateCode(this.employee.EmployeeCode)==false) {
         alert('Mã nhân viên này đã tồn tại trên hệ thống!');
         this.closeDialog();
       }
       else {
+        // Nếu không trùng EmployeeCode thì Validate các trường dữ liệu
         if(this.validateData()==false) {
           // dữ liệu không hợp lệ, cảnh báo người dùng.
         }
@@ -348,18 +353,19 @@ export default {
                 alert(error.response.data.UserMsg);
               }
             });
-          // alert('da update nhan vien');
-          // console.log(response.data);
           this.closeDialog();
           this.$parent.loadData();
         }
       }
     },
 
+    // xử lý khi ấn vào Lưu Nhân viên khi thêm mới
     async btnSaveOnClick() {
+      // validate dữ liệu trước khi cho phép thêm
       if(this.validateData() == false) {
         // validate ko hop le.
       }
+      // nếu phù hợp nghiệp vụ thì cho thêm
       else {
         await axios.post("http://localhost:62735/api/v1/Employees", this.employee)
         .catch(function (error){
@@ -367,11 +373,13 @@ export default {
             alert(error.response.data.UserMsg);
           }
         });
+        // đóng dialog và load lại data trong TheContent
         this.$parent.closeDialog();
         this.$parent.loadData();
       }
     },
 
+    // Mở tab Contact khi ấn vào tab Liên Hệ
     btnContactOnClick() {
       this.isHideContactTab = false;
       this.isHideBankAcountTab = true;
@@ -379,6 +387,7 @@ export default {
       this.isActiveBtnBankAcount = false;
     },
 
+    // mở tab BankAcount khi ấn vào tab Tài Khoản Ngân Hàng
     btnBankAcountOnClick() {
       this.isHideContactTab = true;
       this.isHideBankAcountTab = false;
@@ -386,12 +395,11 @@ export default {
       this.isActiveBtnBankAcount = true;
     },
 
+    // Hàm Validate định dạng dữ liệu nhập vào, return: True - hợp lệ; False: không hợp lệ
     validateData() {
-      // const formEmpty = /^$|\s+/;
       const formFullName = /[a-zA-ZàáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ\s]+$/;
       const formEmail = /^[a-zA-Z0-9._]+(@gmail.com|@outlook.com|@yahoo.com)$/;
       const formEmployeeCode = /^NV[0-9]{4}$/;
-      // const formIdentifyNumber = /^[0-9]{12}/;
 
       var failed = 0;
       // Validate FullName: 
@@ -444,7 +452,7 @@ export default {
         this.isHideErrorEmail = true;
       }
       
-      // console.log(formFullName, formEmail, formEmployeeCode);
+      // nếu không có lỗi thì không hiện cảnh báo
       if(failed == 0) {
         this.isHideErrorName = true;
         this.isHideErrorCode = true;
@@ -458,6 +466,7 @@ export default {
       }
     },
 
+    // định dạng ngày về yyyy-MM-dd
     formatDate(date){
       var d = new Date(date),
         month = '' + (d.getMonth() + 1),

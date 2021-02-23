@@ -10,7 +10,6 @@
         id="btnAdd"
         btnText = "Thêm"
       />
-      <!-- <button id="btnAdd" class="btn">Thêm</button> -->
     </div>
 
     
@@ -97,7 +96,7 @@
       @closeDialog='closeDialog'
       ref="TheDialog"
     />
-    <Popup 
+    <ThePopup 
       :isHidePopup='isHidePopup'
       ref="Popup"
     />
@@ -108,7 +107,7 @@
 import axios from 'axios';
 import TheDialog from '../page/Employee/TheDialog'
 import BaseButton from '../base/BaseButton'
-import Popup from '../page/Employee/Popup'
+import ThePopup from '../page/Employee/ThePopup'
 
 export default {
   name: 'Content',
@@ -118,7 +117,7 @@ export default {
   components: {
     BaseButton,
     TheDialog,
-    Popup,
+    ThePopup,
   },
   data() {
     return {
@@ -141,19 +140,11 @@ export default {
         alert(error.response.data.UserMsg);
       }
     });
-    // const codes = await axios.get("http://localhost:62735/api/v1/Employees/GetCode");
     this.employees = response.data;
-    // var c = parseInt(codes.data[codes.data.length-1].slice(2)) + 1;
-    // if(c<99)
-    //   this.employeeCodeMax = 'NV00' + c;
-    // else if(c<999)
-    //   this.employeeCodeMax = 'NV00' + c;
-    // else
-    //   this.employeeCodeMax = 'NV' + c;
-    // console.log(codes, this.employeeCodeMax);
     this.getCodeMax();
   },
   methods: {
+    // mở dialog Innsert (hiện button Save, ẩn button Update)
     openDialogInsert(employee) {
       this.isHideDialog = false;
       this.$refs.TheDialog.isHideBtnSave = false;
@@ -165,6 +156,7 @@ export default {
       this.$refs.TheDialog.showDetailInsert(employee);
     },
 
+    // mở dialog Innsert (ẩn button Save, hiện button Update)
     openDialogUpdate(employee) {
       this.isHideDialog = false;
       this.$refs.TheDialog.isHideBtnSave = true;
@@ -176,6 +168,7 @@ export default {
       this.$refs.TheDialog.showDetailUpdate(employee);
     },
 
+    // đóng dialog và load lại data
     closeDialog(){
       this.isHideDialog = true;
       this.loadData();
@@ -189,13 +182,16 @@ export default {
       this.isHidePopup = true;
     },
 
+    // xử lý khi ấn vào "Xóa"
     btnDeleteOnClick(id, code){
       this.openPopup();
       this.$refs.Popup.idDel = id;
       this.$refs.Popup.codeDel = code;
     },
 
+    // tìm kiếm Nhân viên theo Mã hoặc tên
     async searchEmployees() {
+      // nếu trống thì lấy toàn bộ
       if(this.valueSearch.trim() == '')
       {
         const response = await axios.get("http://localhost:62735/api/v1/Employees")
@@ -208,6 +204,7 @@ export default {
       }
       else
       {
+        // nếu có value thì lấy theo yêu cầu
         var url = "http://localhost:62735/api/v1/Employees/SearchByCodeAndName?str=" + this.valueSearch;
         const response = await axios.get(url)
         .catch(function (error){
@@ -219,9 +216,8 @@ export default {
       }
     },
 
+    // gọi xóa nhân viên theo ID
     async deleteEmployee(EmployeeId) {
-      // console.log("ham deleteEmployee trong TheContent.vue");
-      // console.log(EmployeeId);
       await axios({
         method: 'DELETE',
         url: 'http://localhost:62735/api/v1/Employees',
@@ -234,17 +230,17 @@ export default {
             alert(error.response.data.UserMsg);
           }
         });
-      // console.log(response.data);
       this.loadData();
     },
 
+    // Load lại data và lấy lại EmployeeCode lớn nhất
     async loadData() {
       const res = await axios.get("http://localhost:62735/api/v1/Employees");
       this.employees = res.data;
       this.getCodeMax();
-      // console.log('da load lai data');
     },
 
+    // hàm lấy EmployeeCode lớn nhất trong DB
     async getCodeMax() {
       const codes = await axios.get("http://localhost:62735/api/v1/Employees/GetCode")
       .catch(function (error){
@@ -259,7 +255,6 @@ export default {
         this.employeeCodeMax = 'NV0' + c;
       else
         this.employeeCodeMax = 'NV' + c;
-      // console.log(codes, this.employeeCodeMax);
     },
 
     checkDuplicateCode(code) {
