@@ -258,7 +258,7 @@ export default {
         this.employeeCodeMax = 'NV' + c;
     },
 
-    // Check trùng EmployeeCode
+    // Check trùng EmployeeCode, return: true - không trùng; false - có trùng
     checkDuplicateCode(code) {
       var numberDuplicate = 0;
       this.employees.forEach(e => {
@@ -270,7 +270,21 @@ export default {
         return false;
       else
         return true;
-    }
+    },
+
+    // Check trùng IdentifyNumber, return: true - không trùng; false - có trùng
+    checkDuplicateIdNumber(idNumber) {
+      var numberDuplicate = 0;
+      this.employees.forEach(e => {
+        if(idNumber == e.IdentifyNumber) {
+          numberDuplicate ++;
+        }
+      });
+      if(numberDuplicate > 1)
+        return false;
+      else
+        return true;
+    },
   },
   computed: {
     

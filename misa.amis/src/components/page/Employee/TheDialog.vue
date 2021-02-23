@@ -333,9 +333,14 @@ export default {
 
     // xử lý Sửa nhân viên
     async btnUpdateOnClick() {
-      // check sau khi sửa mà bị trùn EmployeeCode
+      // check sau khi sửa mà bị trùng EmployeeCode
       if(this.$parent.checkDuplicateCode(this.employee.EmployeeCode)==false) {
         alert('Mã nhân viên này đã tồn tại trên hệ thống!');
+        this.closeDialog();
+      }
+      // check sau khi sửa mà bị trùng IdentifyNumber
+      else if(this.$parent.checkDuplicateIdNumber(this.employee.IdentifyNumber)==false) {
+        alert('Số CMND đã tồn tại trên hệ thống!');
         this.closeDialog();
       }
       else {
