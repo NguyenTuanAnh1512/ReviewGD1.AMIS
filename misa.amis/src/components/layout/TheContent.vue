@@ -317,21 +317,30 @@ export default {
     },
 
     // Check trùng EmployeeCode, return: true - không trùng; false - có trùng
-    checkDuplicateCode(code) {
+    checkDuplicateCode(code, func) {
       var numberDuplicate = 0;
       this.employees.forEach(e => {
         if(code == e.EmployeeCode) {
           numberDuplicate ++;
         }
       });
-      if(numberDuplicate > 1)
-        return false;
-      else
-        return true;
+      // console.log(numberDuplicate);
+      if(func=='insert'){
+        if(numberDuplicate > 0)
+          return false;
+        else
+          return true;
+      }
+      else{
+        if(numberDuplicate > 1)
+          return false;
+        else
+          return true;
+      }
     },
 
     // Check trùng IdentifyNumber, return: true - không trùng; false - có trùng
-    checkDuplicateIdNumber(idNumber) {
+    checkDuplicateIdNumber(idNumber, func) {
       if(idNumber.trim()==''){
         return true;
       }
@@ -342,10 +351,19 @@ export default {
             numberDuplicate ++;
           }
         });
-        if(numberDuplicate > 1)
-          return false;
-        else
-          return true;
+        console.log(numberDuplicate);
+        if(func=='insert'){
+          if(numberDuplicate > 0)
+            return false;
+          else
+            return true;
+        }
+        else {
+          if(numberDuplicate > 1)
+            return false;
+          else
+            return true;
+        }
       }
     },
   },

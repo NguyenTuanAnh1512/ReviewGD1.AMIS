@@ -24,7 +24,7 @@
               <input 
                 type="text" name="code" class="input"
                 v-model="employee.EmployeeCode"
-                tabindex="0"
+                tabindex="1"
                 autofocus = "on"
               >
               <small 
@@ -37,9 +37,9 @@
               <input 
                 type="text" name="name" class="input"
                 v-model="employee.FullName"
-                tabindex="2"
+                tabindex="1"
               >
-              <small 
+              <small
                 id="error-name" class="error-msg"
                 :class="{isHide:isHideErrorName}"
               >Không được để trống và không có ký tự đặc biệt!</small>
@@ -51,6 +51,7 @@
               <input 
                 type="date" name="dob" class="input"
                 v-model="employee.DateOfBirth"
+                tabindex="2"
               >
             </div>
             <div class="wrap-input">
@@ -58,11 +59,13 @@
               <input 
                 type="radio" name="gender" value="1" class="input" 
                 v-model="employee.Gender"
+                tabindex="3"
               > <span class="text-gender">Nam</span>
               
               <input 
                 type="radio" name="gender" value="0" class="input" 
                 v-model="employee.Gender"
+                tabindex="3"
               > <span class="text-gender">Nữ</span>
             </div>
           </div>
@@ -74,6 +77,7 @@
               <select name="department" class="input"
                 :value="employee.DepartmentName"
                 v-model="employee.DepartmentId"
+                tabindex="5"
               >
                 <option 
                   :value="department.departmentId"
@@ -92,7 +96,7 @@
               <input 
                 type="text" name="identifyNumber" class="input"
                 v-model="employee.IdentifyNumber"
-                tabindex="3"
+                tabindex="6"
               >
             </div>
             <div class="wrap-input">
@@ -100,6 +104,7 @@
               <input 
                 type="date" name="dateOfIdentifyNumber" class="input"
                 v-model="employee.DateOfIdentifyNumber"
+                tabindex="7"
               >
             </div>
           </div>
@@ -111,7 +116,7 @@
               <input 
                 type="text" name="positionName" class="input"
                 v-model="employee.PositionName"
-                tabindex="4"
+                tabindex="8"
               >
             </div>
           </div>
@@ -120,7 +125,8 @@
               <label for="placeOfIdentifyNumber">Nơi cấp</label><br>
               <input 
                 type="text" name="placeOfIdentifyNumber" class="input"
-                v-model="employee.PlaceOfIdentifyNumber"  
+                v-model="employee.PlaceOfIdentifyNumber" 
+                tabindex="9" 
               >
             </div>
           </div>
@@ -131,6 +137,7 @@
           class="btn-contact btn-tab"
           :class="{ active: isActiveBtnContact }"
           @click="btnContactOnClick"
+          tabindex="10"
         >
           Liên hệ
         </button>
@@ -138,6 +145,7 @@
           class="btn-bank-acount btn-tab"
           :class="{ active: isActiveBtnBankAcount }"
           @click="btnBankAcountOnClick"
+          tabindex="11"
         >
           Tài khoản ngân hàng
         </button>
@@ -149,6 +157,7 @@
               <input 
                 type="text" name="address" class="input"
                 v-model="employee.Address"
+                tabindex="12"
               >
             </div>
             <div class="row-2">
@@ -157,6 +166,7 @@
                 <input 
                   type="text" name="mobilePhoneNumber" class="input"
                   v-model="employee.MobilePhoneNumber"
+                  tabindex="13"
                 >
               </div>
               <div class="wrap-input">
@@ -164,6 +174,7 @@
                 <input 
                   type="text" name="landlinePhoneNumber" class="input"
                   v-model="employee.LandlinePhoneNumber"
+                  tabindex="14"
                 >
               </div>
               <div class="wrap-input">
@@ -171,6 +182,7 @@
                 <input 
                   type="text" name="email" class="input"
                   v-model="employee.Email"
+                  tabindex="15"
                 >
                 <small 
                   id="error-email" class="error-msg"
@@ -195,24 +207,28 @@
                       <input 
                         type="text" class="input" name="bankAcountNumber"
                         v-model="employee.BankAcountNumber"
+                        tabindex="16"
                       >
                     </td>
                     <td>
                       <input 
                         type="text" class="input" name="bankName"
                         v-model="employee.BankName"
+                        tabindex="17"
                       >
                     </td>
                     <td>
                       <input 
                         type="text" class="input" name="bankBranch"
                         v-model="employee.BankBranch"
+                        tabindex="18"
                       >
                     </td>
                     <td>
                       <input 
                         type="text" class="input" name="bankProvince"
                         v-model="employee.BankProvince"
+                        tabindex="19"
                       >
                     </td>
                     <td style="text-align: center"><span class="icon-delete"></span></td>
@@ -232,6 +248,7 @@
             @btnOnClick="btnCancelOnClick"
             id="btnCancel"
             btnText = "Hủy"
+            tabindex="20"
           />
           <div>
             <BaseButton
@@ -239,12 +256,14 @@
               id="btnUpdate"
               :class="{ isHide: isHideBtnUpdate }"
               btnText = "Cất"
+              tabindex="21"
             />
             <BaseButton
               @btnOnClick="btnSaveOnClick"
               id="btnSave"
               :class="{ isHide: isHideBtnSave }"
               btnText = "Cất và Thêm"
+              tabindex="21"
             />
           </div>
         </div>
@@ -336,17 +355,17 @@ export default {
     // xử lý Sửa nhân viên
     async btnUpdateOnClick() {
       // check sau khi sửa mà bị trùng EmployeeCode
-      if(this.$parent.checkDuplicateCode(this.employee.EmployeeCode)==false) {
+      if(this.$parent.checkDuplicateCode(this.employee.EmployeeCode, 'update')==false) {
         this.$parent.openBasePopup('Mã nhân viên này đã tồn tại trên hệ thống!');
-        this.closeDialog();
+        this.$parent.loadData();
       }
       // check sau khi sửa mà bị trùng IdentifyNumber
-      else if(this.$parent.checkDuplicateIdNumber(this.employee.IdentifyNumber)==false) {
+      else if(this.$parent.checkDuplicateIdNumber(this.employee.IdentifyNumber, 'update')==false) {
         this.$parent.openBasePopup('Số CMND đã tồn tại trên hệ thống!');
-        this.closeDialog();
+        this.$parent.loadData();
       }
       else {
-        // Nếu không trùng EmployeeCode thì Validate các trường dữ liệu
+        // Nếu không trùng thì Validate các trường dữ liệu
         if(this.validateData()==false) {
           // dữ liệu không hợp lệ, cảnh báo người dùng.
         }
@@ -372,24 +391,36 @@ export default {
 
     // xử lý khi ấn vào Lưu Nhân viên khi thêm mới
     async btnSaveOnClick() {
-      // validate dữ liệu trước khi cho phép thêm
-      if(this.validateData() == false) {
-        // validate ko hop le.
-      }
-      // nếu phù hợp nghiệp vụ thì cho thêm
-      else {
-        await axios.post("http://localhost:62735/api/v1/Employees", this.employee)
-        .then(
-          this.$parent.openBasePopup('Thêm nhân viên thành công!')
-        )
-        .catch(function (error){
-          if(error.response){
-            this.$parent.openBasePopup(error.response.data.UserMsg);
-          }
-        });
-        // đóng dialog và load lại data trong TheContent
-        this.$parent.closeDialog();
+      // check sau khi sửa mà bị trùng EmployeeCode
+      if(this.$parent.checkDuplicateCode(this.employee.EmployeeCode, 'insert')==false) {
+        this.$parent.openBasePopup('Mã nhân viên này đã tồn tại trên hệ thống!');
         this.$parent.loadData();
+      }
+      // check sau khi sửa mà bị trùng IdentifyNumber
+      else if(this.$parent.checkDuplicateIdNumber(this.employee.IdentifyNumber, 'insert')==false) {
+        this.$parent.openBasePopup('Số CMND đã tồn tại trên hệ thống!');
+        this.$parent.loadData();
+      }
+      else {
+        // validate dữ liệu trước khi cho phép thêm
+        if(this.validateData() == false) {
+          // validate ko hop le.
+        }
+        // nếu phù hợp nghiệp vụ thì cho thêm
+        else {
+          await axios.post("http://localhost:62735/api/v1/Employees", this.employee)
+          .then(
+            this.$parent.openBasePopup('Thêm nhân viên thành công!')
+          )
+          .catch(function (error){
+            if(error.response){
+              this.$parent.openBasePopup(error.response.data.UserMsg);
+            }
+          });
+          // đóng dialog và load lại data trong TheContent
+          this.$parent.closeDialog();
+          this.$parent.loadData();
+        }
       }
     },
 
