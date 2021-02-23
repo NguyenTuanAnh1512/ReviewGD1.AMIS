@@ -37,7 +37,8 @@
           <th style="width: 5%">CHỨC NĂNG</th>
         </thead>
         <tbody id="tbody">
-          <tr v-for="(employee, index) in employees" :key="index">
+          <tr v-for="(employee, index) in employees" :key="index"
+              @dblclick="openDialogUpdate(employee)">
             <td>{{ employee.EmployeeCode }}</td>
             <td>{{ employee.FullName }}</td>
             <td>{{ employee.PositionName }}</td>
@@ -257,6 +258,7 @@ export default {
         this.employeeCodeMax = 'NV' + c;
     },
 
+    // Check trùng EmployeeCode
     checkDuplicateCode(code) {
       var numberDuplicate = 0;
       this.employees.forEach(e => {
