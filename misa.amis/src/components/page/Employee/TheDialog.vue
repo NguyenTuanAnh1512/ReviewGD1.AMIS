@@ -24,7 +24,8 @@
               <input 
                 type="text" name="code" class="input"
                 v-model="employee.EmployeeCode"
-                tabindex="1"
+                tabindex="0"
+                autofocus = "on"
               >
               <small 
                 id="error-code" class="error-msg"
@@ -303,6 +304,7 @@ export default {
     }
   },
   methods: {
+
     // load Employee muốn sửa thông tin vào, format dữ liệu nếu cần
     showDetailUpdate(employee){
       // console.log('employee trong ham showDetail trong Dialog.Vue', employee);
@@ -335,12 +337,12 @@ export default {
     async btnUpdateOnClick() {
       // check sau khi sửa mà bị trùng EmployeeCode
       if(this.$parent.checkDuplicateCode(this.employee.EmployeeCode)==false) {
-        alert('Mã nhân viên này đã tồn tại trên hệ thống!');
+        this.$parent.openBasePopup('Mã nhân viên này đã tồn tại trên hệ thống!');
         this.closeDialog();
       }
       // check sau khi sửa mà bị trùng IdentifyNumber
       else if(this.$parent.checkDuplicateIdNumber(this.employee.IdentifyNumber)==false) {
-        alert('Số CMND đã tồn tại trên hệ thống!');
+        this.$parent.openBasePopup('Số CMND đã tồn tại trên hệ thống!');
         this.closeDialog();
       }
       else {
@@ -353,9 +355,13 @@ export default {
             method: 'PUT',
             url: 'http://localhost:62735/api/v1/Employees',
             data: this.employee
-          }).catch(function (error){
+          })
+          .then(
+            this.$parent.openBasePopup('Cập nhật nhân viên thành công!')
+          )
+          .catch(function (error){
               if(error.response){
-                alert(error.response.data.UserMsg);
+                this.$parent.openBasePopup(error.response.data.UserMsg);
               }
             });
           this.closeDialog();
@@ -373,9 +379,12 @@ export default {
       // nếu phù hợp nghiệp vụ thì cho thêm
       else {
         await axios.post("http://localhost:62735/api/v1/Employees", this.employee)
+        .then(
+          this.$parent.openBasePopup('Thêm nhân viên thành công!')
+        )
         .catch(function (error){
           if(error.response){
-            alert(error.response.data.UserMsg);
+            this.$parent.openBasePopup(error.response.data.UserMsg);
           }
         });
         // đóng dialog và load lại data trong TheContent

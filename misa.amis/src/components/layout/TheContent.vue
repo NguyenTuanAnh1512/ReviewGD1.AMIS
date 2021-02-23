@@ -12,12 +12,12 @@
       />
     </div>
 
-    
+
     <!--Table-->
     <div class="wrap-table">
       <div class="wrap-input">
         <i class="icon-search"></i>
-        <input 
+        <input
           class="input-search-employee input input-with-icon" placeholder="Tìm theo tên, mã nhân viên,..."
           v-model="valueSearch"
           @change="searchEmployees"
@@ -48,20 +48,23 @@
             <td>{{ employee.PropertyBankAcount }}</td>
             <td>{{ employee.BankBranch}}</td>
             <td style="color: blue">
-              <button 
+              <button
                 id="open-update-dialog"
-                @click="openDialogUpdate(employee)"  
+                @click="openDialogUpdate(employee)"
               >Sửa</button>
               <div class="dropdown">
                 <button class="dropbtn"><span class="icon-dropdown"></span></button>
                 <div class="dropdown-content">
-                  <button class="feature-option">Nhân bản</button>
-                  <button 
-                    :id='employee.EmployeeCode' 
+                  <button class="feature-option disable">Nhân bản</button>
+                  <button
+                    :id='employee.EmployeeCode'
                     class="feature-option"
                     @click="btnDeleteOnClick(employee.EmployeeId, employee.EmployeeCode)"
                   >Xóa</button>
-                  <button class="feature-option">Ngừng sử dụng</button>
+                  <button
+                    id="stopAction" class="feature-option"
+                    @click="stopActionOnClick(employee)"
+                  >Ngừng sử dụng</button>
                 </div>
               </div>
             </td>
@@ -72,7 +75,7 @@
 
       <div class="footer">
         <div class="row-number">
-          Tổng số <b>94</b> bản ghi
+          Tổng số <b>{{ numberOfRow }}</b> bản ghi
         </div>
         <div class="footer-right-side">
           <select id="select-row-number" class="input">
@@ -91,15 +94,19 @@
         </div>
       </div>
     </div>
-    <TheDialog 
+    <TheDialog
       :isHideDialog='isHideDialog'
       :employeeCodeMax='employeeCodeMax'
       @closeDialog='closeDialog'
       ref="TheDialog"
     />
-    <ThePopup 
+    <ThePopup
       :isHidePopup='isHidePopup'
       ref="Popup"
+    />
+    <BasePopup
+      :isHideBasePopup='isHideBasePopup'
+      ref="BasePopup"
     />
   </div>
 </template>
@@ -108,6 +115,7 @@
 import axios from 'axios';
 import TheDialog from '../page/Employee/TheDialog'
 import BaseButton from '../base/BaseButton'
+import BasePopup from '../base/BasePopup'
 import ThePopup from '../page/Employee/ThePopup'
 
 export default {
@@ -119,12 +127,15 @@ export default {
     BaseButton,
     TheDialog,
     ThePopup,
+    BasePopup,
   },
   data() {
     return {
       isHideDialog: true,
       isHidePopup: true,
-      employeeCodeDelete: "NV1000",
+      isHideBasePopup: true,
+      numberOfRow: 1,
+      employeeCodeDelete: "",
       employees: [
         {
           employeeCode: 'LOADING',
@@ -135,14 +146,17 @@ export default {
     }
   },
   async created() {
-    const response = await axios.get("http://localhost:62735/api/v1/Employees")
+    await axios.get("http://localhost:62735/api/v1/Employees")
+    .then(response => {
+      this.employees = response.data;
+      this.getCodeMax();
+      this.numberOfRow = response.data.length;
+    })
     .catch(function (error){
       if(error.response){
-        alert(error.response.data.UserMsg);
+        this.openBasePopup(error.response.data.UserMsg);
       }
     });
-    this.employees = response.data;
-    this.getCodeMax();
   },
   methods: {
     // mở dialog Innsert (hiện button Save, ẩn button Update)
@@ -183,6 +197,15 @@ export default {
       this.isHidePopup = true;
     },
 
+    openBasePopup(str) {
+      this.isHideBasePopup = false;
+      this.$refs.BasePopup.msg=str;
+    },
+
+    closeBasePopup() {
+      this.isHideBasePopup = true;
+    },
+
     // xử lý khi ấn vào "Xóa"
     btnDeleteOnClick(id, code){
       this.openPopup();
@@ -190,30 +213,55 @@ export default {
       this.$refs.Popup.codeDel = code;
     },
 
+    async stopActionOnClick(employee) {
+      if(employee.PropertyBankAcount == 'Ngừng hoạt động') {
+        this.openBasePopup("Đã ở tình trạng ngừng hoạt động rồi!");
+      }
+      else {
+        employee.PropertyBankAcount = 'Ngừng hoạt động';
+        await axios({
+                method: 'PUT',
+                url: 'http://localhost:62735/api/v1/Employees',
+                data: employee
+              }).then(
+                this.openBasePopup("Tài khoản ngân hàng đã được ngừng sử dụng thành công!")
+              )
+              .catch(function (error){
+                  if(error.response){
+                    this.openBasePopup(error.response.data.UserMsg);
+                  }
+                });
+      }
+    },
+
     // tìm kiếm Nhân viên theo Mã hoặc tên
     async searchEmployees() {
       // nếu trống thì lấy toàn bộ
       if(this.valueSearch.trim() == '')
       {
-        const response = await axios.get("http://localhost:62735/api/v1/Employees")
+        await axios.get("http://localhost:62735/api/v1/Employees")
+        .then(response => {
+          this.employees = response.data;
+        })
         .catch(function (error){
           if(error.response){
-            alert(error.response.data.UserMsg);
+            this.openBasePopup(error.response.data.UserMsg);
           }
         });
-        this.employees = response.data;
       }
       else
       {
         // nếu có value thì lấy theo yêu cầu
-        var url = "http://localhost:62735/api/v1/Employees/SearchByCodeAndName?str=" + this.valueSearch;
-        const response = await axios.get(url)
+        var url = "http://localhost:62735/api/v1/Employees/SearchByCodeAndName?str=" + this.valueSearch.trim();
+        await axios.get(url)
+        .then(response => {
+          this.employees = response.data;
+        })
         .catch(function (error){
           if(error.response){
-            alert(error.response.data.UserMsg);
+            this.openBasePopup(error.response.data.UserMsg);
           }
         });
-        this.employees = response.data;
       }
     },
 
@@ -228,7 +276,7 @@ export default {
       })
       .catch(function (error){
           if(error.response){
-            alert(error.response.data.UserMsg);
+            this.openBasePopup(error.response.data.UserMsg);
           }
         });
       this.loadData();
@@ -236,26 +284,36 @@ export default {
 
     // Load lại data và lấy lại EmployeeCode lớn nhất
     async loadData() {
-      const res = await axios.get("http://localhost:62735/api/v1/Employees");
-      this.employees = res.data;
-      this.getCodeMax();
+      await axios.get("http://localhost:62735/api/v1/Employees")
+      .then(response => {
+        this.employees = response.data;
+        this.getCodeMax();
+        this.numberOfRow = response.data.length;
+      })
+      .catch(function (error){
+        if(error.response){
+          this.openBasePopup(error.response.data.UserMsg);
+        }
+      });
     },
 
     // hàm lấy EmployeeCode lớn nhất trong DB
     async getCodeMax() {
-      const codes = await axios.get("http://localhost:62735/api/v1/Employees/GetCode")
+      await axios.get("http://localhost:62735/api/v1/Employees/GetCode")
+      .then(response => {
+        var c = parseInt(response.data[response.data.length-1].slice(2)) + 1;
+        if(c<99)
+          this.employeeCodeMax = 'NV00' + c;
+        else if(c<999)
+          this.employeeCodeMax = 'NV0' + c;
+        else
+          this.employeeCodeMax = 'NV' + c;
+        })
       .catch(function (error){
-          if(error.response){
-            alert(error.response.data.UserMsg);
-          }
-        });
-      var c = parseInt(codes.data[codes.data.length-1].slice(2)) + 1;
-      if(c<99)
-        this.employeeCodeMax = 'NV00' + c;
-      else if(c<999)
-        this.employeeCodeMax = 'NV0' + c;
-      else
-        this.employeeCodeMax = 'NV' + c;
+        if(error.response){
+          this.openBasePopup(error.response.data.UserMsg);
+        }
+      });
     },
 
     // Check trùng EmployeeCode, return: true - không trùng; false - có trùng
@@ -274,20 +332,25 @@ export default {
 
     // Check trùng IdentifyNumber, return: true - không trùng; false - có trùng
     checkDuplicateIdNumber(idNumber) {
-      var numberDuplicate = 0;
-      this.employees.forEach(e => {
-        if(idNumber == e.IdentifyNumber) {
-          numberDuplicate ++;
-        }
-      });
-      if(numberDuplicate > 1)
-        return false;
-      else
+      if(idNumber.trim()==''){
         return true;
+      }
+      else {
+        var numberDuplicate = 0;
+        this.employees.forEach(e => {
+          if(idNumber == e.IdentifyNumber) {
+            numberDuplicate ++;
+          }
+        });
+        if(numberDuplicate > 1)
+          return false;
+        else
+          return true;
+      }
     },
   },
   computed: {
-    
+
   },
 }
 </script>
@@ -464,7 +527,7 @@ thead {
   z-index: 1;
 }
 
-.dropdown-content button {
+.dropdown-content .feature-option {
   color: black;
   padding: 12px 16px;
   width: 130px;
@@ -475,10 +538,21 @@ thead {
   cursor: pointer;
 }
 
-.dropdown-content button:hover 
+.dropdown-content .feature-option.disable {
+  opacity: 0.5;
+}
+
+.dropdown-content .feature-option:hover
 {
   background-color: #f1f1f1;
   color: rgb(0, 190, 0);
+}
+
+.dropdown-content .feature-option.disable:hover
+{
+  opacity: 0.5;
+  background-color: inherit;
+  color: black;
 }
 
 .dropdown:hover .dropdown-content {
