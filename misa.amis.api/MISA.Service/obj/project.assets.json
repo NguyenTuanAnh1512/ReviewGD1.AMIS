@@ -1022,20 +1022,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC\\.nuget\\packages\\": {}
+    "C:\\Users\\ntanh\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MISA\\ReviewGD1\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Service\\MISA.Service.csproj",
+      "projectUniqueName": "C:\\Users\\ntanh\\Desktop\\NTA.AMIS\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Service\\MISA.Service.csproj",
       "projectName": "MISA.Service",
-      "projectPath": "D:\\MISA\\ReviewGD1\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Service\\MISA.Service.csproj",
-      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "D:\\MISA\\ReviewGD1\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Service\\obj\\",
+      "projectPath": "C:\\Users\\ntanh\\Desktop\\NTA.AMIS\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Service\\MISA.Service.csproj",
+      "packagesPath": "C:\\Users\\ntanh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ntanh\\Desktop\\NTA.AMIS\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Service\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\ntanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -1048,11 +1053,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\MISA\\ReviewGD1\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Common\\MISA.Common.csproj": {
-              "projectPath": "D:\\MISA\\ReviewGD1\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Common\\MISA.Common.csproj"
+            "C:\\Users\\ntanh\\Desktop\\NTA.AMIS\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Common\\MISA.Common.csproj": {
+              "projectPath": "C:\\Users\\ntanh\\Desktop\\NTA.AMIS\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Common\\MISA.Common.csproj"
             },
-            "D:\\MISA\\ReviewGD1\\ReviewGD1.AMIS\\misa.amis.api\\MISA.DataLayer\\MISA.DataLayer.csproj": {
-              "projectPath": "D:\\MISA\\ReviewGD1\\ReviewGD1.AMIS\\misa.amis.api\\MISA.DataLayer\\MISA.DataLayer.csproj"
+            "C:\\Users\\ntanh\\Desktop\\NTA.AMIS\\ReviewGD1.AMIS\\misa.amis.api\\MISA.DataLayer\\MISA.DataLayer.csproj": {
+              "projectPath": "C:\\Users\\ntanh\\Desktop\\NTA.AMIS\\ReviewGD1.AMIS\\misa.amis.api\\MISA.DataLayer\\MISA.DataLayer.csproj"
             }
           }
         }
@@ -1081,7 +1086,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -26,3 +26,17 @@ D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Service\obj\Debug\netcoreapp
 D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Service\obj\Debug\netcoreapp3.1\MISA.Service.csproj.CopyComplete
 D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Service\obj\Debug\netcoreapp3.1\MISA.Service.dll
 D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.Service\obj\Debug\netcoreapp3.1\MISA.Service.pdb
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.Service\bin\Debug\netcoreapp3.1\MISA.Service.deps.json
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.Service\bin\Debug\netcoreapp3.1\MISA.Service.dll
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.Service\bin\Debug\netcoreapp3.1\MISA.Service.pdb
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.Service\bin\Debug\netcoreapp3.1\MISA.Common.dll
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.Service\bin\Debug\netcoreapp3.1\MISA.DataLayer.dll
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.Service\bin\Debug\netcoreapp3.1\MISA.Common.pdb
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.Service\bin\Debug\netcoreapp3.1\MISA.DataLayer.pdb
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.Service\obj\Debug\netcoreapp3.1\MISA.Service.csprojAssemblyReference.cache
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.Service\obj\Debug\netcoreapp3.1\MISA.Service.csproj.CoreCompileInputs.cache
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.Service\obj\Debug\netcoreapp3.1\MISA.Service.AssemblyInfoInputs.cache
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.Service\obj\Debug\netcoreapp3.1\MISA.Service.AssemblyInfo.cs
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.Service\obj\Debug\netcoreapp3.1\MISA.Service.csproj.CopyComplete
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.Service\obj\Debug\netcoreapp3.1\MISA.Service.dll
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.Service\obj\Debug\netcoreapp3.1\MISA.Service.pdb

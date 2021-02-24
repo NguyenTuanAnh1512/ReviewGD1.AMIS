@@ -22,3 +22,15 @@ D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\obj\Debug\netcorea
 D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\obj\Debug\netcoreapp3.1\MISA.DataLayer.pdb
 D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\bin\Debug\netcoreapp3.1\MISA.Common.dll
 D:\MISA\ReviewGD1\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\bin\Debug\netcoreapp3.1\MISA.Common.pdb
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\bin\Debug\netcoreapp3.1\MISA.DataLayer.deps.json
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\bin\Debug\netcoreapp3.1\MISA.DataLayer.dll
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\bin\Debug\netcoreapp3.1\MISA.DataLayer.pdb
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\bin\Debug\netcoreapp3.1\MISA.Common.dll
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\bin\Debug\netcoreapp3.1\MISA.Common.pdb
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\obj\Debug\netcoreapp3.1\MISA.DataLayer.csprojAssemblyReference.cache
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\obj\Debug\netcoreapp3.1\MISA.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\obj\Debug\netcoreapp3.1\MISA.DataLayer.AssemblyInfoInputs.cache
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\obj\Debug\netcoreapp3.1\MISA.DataLayer.AssemblyInfo.cs
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\obj\Debug\netcoreapp3.1\MISA.DataLayer.csproj.CopyComplete
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\obj\Debug\netcoreapp3.1\MISA.DataLayer.dll
+C:\Users\ntanh\Desktop\NTA.AMIS\ReviewGD1.AMIS\misa.amis.api\MISA.DataLayer\obj\Debug\netcoreapp3.1\MISA.DataLayer.pdb

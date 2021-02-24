@@ -1548,20 +1548,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC\\.nuget\\packages\\": {}
+    "C:\\Users\\ntanh\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MISA\\ReviewGD1\\ReviewGD1.AMIS\\misa.amis.api\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj",
+      "projectUniqueName": "C:\\Users\\ntanh\\Desktop\\NTA.AMIS\\ReviewGD1.AMIS\\misa.amis.api\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj",
       "projectName": "MISA.CukCuk.Api",
-      "projectPath": "D:\\MISA\\ReviewGD1\\ReviewGD1.AMIS\\misa.amis.api\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj",
-      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "D:\\MISA\\ReviewGD1\\ReviewGD1.AMIS\\misa.amis.api\\MISA.CukCuk.Api\\obj\\",
+      "projectPath": "C:\\Users\\ntanh\\Desktop\\NTA.AMIS\\ReviewGD1.AMIS\\misa.amis.api\\MISA.CukCuk.Api\\MISA.CukCuk.Api.csproj",
+      "packagesPath": "C:\\Users\\ntanh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ntanh\\Desktop\\NTA.AMIS\\ReviewGD1.AMIS\\misa.amis.api\\MISA.CukCuk.Api\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\ntanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -1574,11 +1579,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\MISA\\ReviewGD1\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Common\\MISA.Common.csproj": {
-              "projectPath": "D:\\MISA\\ReviewGD1\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Common\\MISA.Common.csproj"
+            "C:\\Users\\ntanh\\Desktop\\NTA.AMIS\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Common\\MISA.Common.csproj": {
+              "projectPath": "C:\\Users\\ntanh\\Desktop\\NTA.AMIS\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Common\\MISA.Common.csproj"
             },
-            "D:\\MISA\\ReviewGD1\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Service\\MISA.Service.csproj": {
-              "projectPath": "D:\\MISA\\ReviewGD1\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Service\\MISA.Service.csproj"
+            "C:\\Users\\ntanh\\Desktop\\NTA.AMIS\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Service\\MISA.Service.csproj": {
+              "projectPath": "C:\\Users\\ntanh\\Desktop\\NTA.AMIS\\ReviewGD1.AMIS\\misa.amis.api\\MISA.Service\\MISA.Service.csproj"
             }
           }
         }
@@ -1638,7 +1643,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

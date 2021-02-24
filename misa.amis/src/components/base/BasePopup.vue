@@ -95,7 +95,6 @@ export default {
 #popup .popup-confirm {
   width: 80%;
   height: 35%;
-  /* background-color: cadetblue; */
   position: relative;
   left: 10%;
   display: flex;

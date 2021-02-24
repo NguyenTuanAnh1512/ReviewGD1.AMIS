@@ -515,6 +515,10 @@ thead {
   height: 50px;
 }
 
+#table_employee tbody tr:hover {
+  background-color: #f3f3f3;
+}
+
 #table_employee tr {
   background-color: #ffffff;
 }
