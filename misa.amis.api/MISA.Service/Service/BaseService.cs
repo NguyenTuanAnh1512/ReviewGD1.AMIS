@@ -45,7 +45,7 @@ namespace MISA.Service
         /// </summary>
         /// <returns>ServiceResult tương ứng</returns>
         /// CreatedBy: NTANH (21/02/2021)
-        public ServiceResult GetCode()
+        public virtual ServiceResult GetCode()
         {
             var serviceResult = new ServiceResult();
             var dbContext = new DbContext<MISAEntity>();
@@ -59,7 +59,7 @@ namespace MISA.Service
         /// <param name="str">xâu cần tìm</param>
         /// <returns>ServiceResult tương ứng</returns>
         /// CreatedBy: NTANH (21/02/2021)
-        public ServiceResult SearchByCodeAndName(string str)
+        public virtual ServiceResult SearchByCodeAndName(string str)
         {
             var serviceResult = new ServiceResult();
             var dbContext = new DbContext<MISAEntity>();

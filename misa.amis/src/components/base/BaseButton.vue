@@ -22,6 +22,7 @@ export default {
   },
   methods: {
     // Khi ấn vào button thì gọi ra Component cha để xử lý hàm
+    // CreatedBy: NTANH (22/01/2021)
     btnAddOnClick() {
       this.$emit("btnOnClick")
     },
@@ -40,7 +41,7 @@ export default {
     padding-right: 24px;
     text-align: center;
     border: none;
-    outline: none !important;
+    outline: none;
     cursor: pointer;
     /* min-width: 100px; */
   }
@@ -51,6 +52,11 @@ export default {
 
   .button:active {
     background-color: #01B075;
+    outline: none;
+  }
+
+  .button:focus {
+    outline: none;
   }
   
   .button_with_icon {

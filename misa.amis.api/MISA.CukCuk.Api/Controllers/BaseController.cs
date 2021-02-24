@@ -31,7 +31,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// <returns>Collection Object</returns>
         /// CreatedBy: NTANH (21/02/2021)
         [HttpGet]
-        public IActionResult Get()
+        public virtual IActionResult Get()
         {
             var serviceResult = _baseService.GetAll();
             var entities = serviceResult.Data as List<MISAEntity>;
@@ -51,7 +51,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// <returns>mảng các Code</returns>
         /// CreatedBy: NTANH (21/02/2021)
         [HttpGet("GetCode")]
-        public IActionResult GetCode()
+        public virtual IActionResult GetCode()
         {
             var serviceResult = _baseService.GetCode();
             var entities = serviceResult.Data;
@@ -72,7 +72,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// <returns>mảng các đối tượng phù hợp</returns>
         /// CreatedBy: NTANH (21/02/2021)
         [HttpGet("SearchByCodeAndName")]
-        public IActionResult SearchByCodeAndName(string str)
+        public virtual IActionResult SearchByCodeAndName(string str)
         {
             var serviceResult = _baseService.SearchByCodeAndName(str);
             var entities = serviceResult.Data;
@@ -93,7 +93,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// <returns>Số bản ghi được thêm</returns>
         /// CreatedBy: NTANH (21/02/2021)
         [HttpPost]
-        public IActionResult Post(MISAEntity entity)
+        public virtual IActionResult Post(MISAEntity entity)
         {   
             var res = _baseService.Insert(entity);
 
@@ -112,7 +112,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// <returns>Số bản ghi bị ảnh hưởng</returns>
         /// CreatedBy: NTANH (21/02/2021)
         [HttpPut]
-        public IActionResult Put(MISAEntity entity)
+        public virtual IActionResult Put(MISAEntity entity)
         {
             var res = _baseService.Update(entity);
 
@@ -131,7 +131,7 @@ namespace MISA.CukCuk.Api.Controllers
         /// <returns>Số bản ghi bị ảnh hưởng</returns>
         /// CreatedBy: NTANH (21/02/2021)
         [HttpDelete]
-        public IActionResult Delete(MISAEntity entity)
+        public virtual IActionResult Delete(MISAEntity entity)
         {
             var res = _baseService.Delete(entity);
 

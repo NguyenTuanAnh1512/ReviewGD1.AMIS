@@ -137,7 +137,6 @@
           class="btn-contact btn-tab"
           :class="{ active: isActiveBtnContact }"
           @click="btnContactOnClick"
-          tabindex="10"
         >
           Liên hệ
         </button>
@@ -145,7 +144,7 @@
           class="btn-bank-acount btn-tab"
           :class="{ active: isActiveBtnBankAcount }"
           @click="btnBankAcountOnClick"
-          tabindex="11"
+          tabindex="15"
         >
           Tài khoản ngân hàng
         </button>
@@ -157,7 +156,7 @@
               <input 
                 type="text" name="address" class="input"
                 v-model="employee.Address"
-                tabindex="12"
+                tabindex="11"
               >
             </div>
             <div class="row-2">
@@ -166,7 +165,7 @@
                 <input 
                   type="text" name="mobilePhoneNumber" class="input"
                   v-model="employee.MobilePhoneNumber"
-                  tabindex="13"
+                  tabindex="12"
                 >
               </div>
               <div class="wrap-input">
@@ -174,7 +173,7 @@
                 <input 
                   type="text" name="landlinePhoneNumber" class="input"
                   v-model="employee.LandlinePhoneNumber"
-                  tabindex="14"
+                  tabindex="13"
                 >
               </div>
               <div class="wrap-input">
@@ -182,7 +181,7 @@
                 <input 
                   type="text" name="email" class="input"
                   v-model="employee.Email"
-                  tabindex="15"
+                  tabindex="14"
                 >
                 <small 
                   id="error-email" class="error-msg"
@@ -237,8 +236,8 @@
               </table>
             </div>
             <div class="group-btn-bank-acount">
-              <button style="margin-right: 10px">Thêm dòng</button>
-              <button>Xóa hết dòng</button>
+              <button style="margin-right: 10px; outline:none">Thêm dòng</button>
+              <button style="outline: none">Xóa hết dòng</button>
             </div>
           </div>
         </div>
@@ -325,6 +324,7 @@ export default {
   methods: {
 
     // load Employee muốn sửa thông tin vào, format dữ liệu nếu cần
+    // CreatedBy: NTANH (22/01/2021)
     showDetailUpdate(employee){
       // console.log('employee trong ham showDetail trong Dialog.Vue', employee);
       employee.DateOfBirth = this.formatDate(employee.DateOfBirth);
@@ -333,6 +333,7 @@ export default {
     },
 
     // Load EmployeeCode mới vào khi thêm mới
+    // CreatedBy: NTANH (22/01/2021)
     showDetailInsert(employee){
       // console.log('employee trong ham showDetail trong Dialog.Vue', employee);
       employee.IdentifyNumber = "";
@@ -341,18 +342,21 @@ export default {
     },
 
     // đóng Dialog và load lại dữ liệu trong TheContent
+    // CreatedBy: NTANH (22/01/2021)
     closeDialog() {
       this.$emit('closeDialog');
       this.$parent.loadData();
     },
 
     // Đóng dialog và load lại data
+    // CreatedBy: NTANH (22/01/2021)
     btnCancelOnClick() {
       this.$emit('closeDialog');
       this.$parent.loadData();
     },
 
     // xử lý Sửa nhân viên
+    // CreatedBy: NTANH (22/01/2021)
     async btnUpdateOnClick() {
       // check sau khi sửa mà bị trùng EmployeeCode
       if(this.$parent.checkDuplicateCode(this.employee.EmployeeCode, 'update')==false) {
@@ -390,6 +394,7 @@ export default {
     },
 
     // xử lý khi ấn vào Lưu Nhân viên khi thêm mới
+    // CreatedBy: NTANH (22/01/2021)
     async btnSaveOnClick() {
       // check sau khi sửa mà bị trùng EmployeeCode
       if(this.$parent.checkDuplicateCode(this.employee.EmployeeCode, 'insert')==false) {
@@ -425,6 +430,7 @@ export default {
     },
 
     // Mở tab Contact khi ấn vào tab Liên Hệ
+    // CreatedBy: NTANH (22/01/2021)
     btnContactOnClick() {
       this.isHideContactTab = false;
       this.isHideBankAcountTab = true;
@@ -433,6 +439,7 @@ export default {
     },
 
     // mở tab BankAcount khi ấn vào tab Tài Khoản Ngân Hàng
+    // CreatedBy: NTANH (22/01/2021)
     btnBankAcountOnClick() {
       this.isHideContactTab = true;
       this.isHideBankAcountTab = false;
@@ -441,6 +448,7 @@ export default {
     },
 
     // Hàm Validate định dạng dữ liệu nhập vào, return: True - hợp lệ; False: không hợp lệ
+    // CreatedBy: NTANH (22/01/2021)
     validateData() {
       const formFullName = /[a-zA-ZàáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ\s]+$/;
       const formEmail = /^[a-zA-Z0-9._]+(@gmail.com|@outlook.com|@yahoo.com)$/;
@@ -512,6 +520,7 @@ export default {
     },
 
     // định dạng ngày về yyyy-MM-dd
+    // CreatedBy: NTANH (22/01/2021)
     formatDate(date){
       var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -534,7 +543,7 @@ export default {
 
 <style scoped>
 #dialog {
-  /* display: none; */
+  /* z-index: 20; */
 }
 
 .isHide {

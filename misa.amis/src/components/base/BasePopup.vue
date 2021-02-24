@@ -35,6 +35,7 @@ export default {
   },
   methods: {
     // khi ấn No, không làm gì và đóng Popup
+    // CreatedBy: NTANH (22/01/2021)
     btnOkOnClick() {
       this.$parent.closeBasePopup();
     },
