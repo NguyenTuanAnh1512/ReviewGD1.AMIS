@@ -48,7 +48,7 @@ namespace MISA.Service
             // - kiểm tra trong DB đã tồn tại mã nhân viên hay chưa
             var isExist = dbContext.CheckEmployeeCodeExist(employee.EmployeeCode);
 
-            if (isExist == true)
+            if (isExist > 0)
             {
                 errorMsg.DevMsg = MISA.Common.Properties.Resources.ErrorService_DuplicateEmployeeCode;
                 errorMsg.UserMsg = MISA.Common.Properties.Resources.ErrorService_DuplicateEmployeeCode;
@@ -56,8 +56,8 @@ namespace MISA.Service
             }
 
             // - kiểm tra trong DB đã tồn tại số CMT hay chưa
-            isExist = dbContext.CheckIdentifyNumberExist(employee.IdentifyNumber);
-            if (isExist == true)
+            var isExists = dbContext.CheckIdentifyNumberExist(employee.IdentifyNumber);
+            if (isExists > 0)
             {
                 errorMsg.DevMsg = MISA.Common.Properties.Resources.ErrorService_DuplicateIdentifyNumber;
                 errorMsg.UserMsg = MISA.Common.Properties.Resources.ErrorService_DuplicateIdentifyNumber;
@@ -95,7 +95,25 @@ namespace MISA.Service
                 errorMsg.UserMsg = MISA.Common.Properties.Resources.ErrorService_EmptyFullName;
                 isValid = false;
             }
-            
+            // 2. validate dữ liệu không được phép trùng: (mã nhân viên, số CMT)
+            // - kiểm tra trong DB đã tồn tại mã nhân viên hay chưa
+            var isExist = dbContext.CheckEmployeeCodeExist(employee.EmployeeCode);
+
+            if (isExist > 1)
+            {
+                errorMsg.DevMsg = MISA.Common.Properties.Resources.ErrorService_DuplicateEmployeeCode;
+                errorMsg.UserMsg = MISA.Common.Properties.Resources.ErrorService_DuplicateEmployeeCode;
+                isValid = false;
+            }
+
+            // - kiểm tra trong DB đã tồn tại số CMT hay chưa
+            var isExists = dbContext.CheckIdentifyNumberExist(employee.IdentifyNumber);
+            if (isExists > 1)
+            {
+                errorMsg.DevMsg = MISA.Common.Properties.Resources.ErrorService_DuplicateIdentifyNumber;
+                errorMsg.UserMsg = MISA.Common.Properties.Resources.ErrorService_DuplicateIdentifyNumber;
+                isValid = false;
+            }
             return isValid;
         }
     }
