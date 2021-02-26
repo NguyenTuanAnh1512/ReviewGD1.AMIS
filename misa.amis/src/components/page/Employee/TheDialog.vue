@@ -1,7 +1,6 @@
 <template>
   <div 
     id="dialog"
-    :class="{ isHide: isHideDialog }"
   >
     <div id="dialog-model"></div>
     <div id="dialog-content">
@@ -56,6 +55,11 @@
             </div>
             <div class="wrap-input">
               <label for="gender">Giới tính</label><br>
+              <BaseRadio 
+                :datas='dataRadio'
+                :choosed='parseInt(this.employee.Gender)'
+                @changeRadio="changeRadio"
+              />
               <input 
                 type="radio" name="gender" value="1" class="input" 
                 v-model="employee.Gender"
@@ -274,16 +278,17 @@
 <script>
 import axios from 'axios'
 import BaseButton from '../../base/BaseButton'
-
+import BaseRadio from '../../base/BaseRadio'
 
 export default {
   name: 'TheDialog',
   props: {
-    isHideDialog: Boolean,
+    
     employeeCodeMax: String,
   },
   components: {
     BaseButton,
+    BaseRadio,
   },
   data() {
     return {
@@ -298,6 +303,17 @@ export default {
       isHideErrorIdentifyNumber: true,
       isHideBtnSave: false,
       isHideBtnUpdate: false,
+      dataRadio: [
+        {
+          label: "Nam",
+          value: 1
+        },
+        {
+          label: 'Nữ',
+          value: 0
+        },
+      ],
+
       errorUserMsg: '',
 
       departments: [
@@ -322,6 +338,9 @@ export default {
     }
   },
   methods: {
+    changeRadio(val) {
+      this.employee.Gender = val;
+    },
 
     // load Employee muốn sửa thông tin vào, format dữ liệu nếu cần
     // CreatedBy: NTANH (22/01/2021)

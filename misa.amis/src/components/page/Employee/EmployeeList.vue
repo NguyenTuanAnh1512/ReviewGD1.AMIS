@@ -95,7 +95,7 @@
       </div>
     </div>
     <TheDialog
-      :isHideDialog='isHideDialog'
+      v-if="isShowDialog"
       :employeeCodeMax='employeeCodeMax'
       @closeDialog='closeDialog'
       ref="TheDialog"
@@ -130,7 +130,8 @@ export default {
   },
   data() {
     return {
-      isHideDialog: true,
+      isShowDialog: false,
+      // isHideDialog: true,
       isHidePopup: true,
       isHideBasePopup: true,
       numberOfRow: 1,
@@ -160,8 +161,9 @@ export default {
   methods: {
     // mở dialog Innsert (hiện button Save, ẩn button Update)
     // CreatedBy: NTANH (22/01/2021)
-    openDialogInsert(employee) {
-      this.isHideDialog = false;
+    async openDialogInsert(employee) {
+      // this.isHideDialog = false;
+      await (this.isShowDialog = true);
       this.$refs.TheDialog.isHideBtnSave = false;
       this.$refs.TheDialog.isHideBtnUpdate = true;
       this.$refs.TheDialog.isHideErrorDepartment = true;
@@ -174,8 +176,9 @@ export default {
 
     // mở dialog Innsert (ẩn button Save, hiện button Update)
     // CreatedBy: NTANH (22/01/2021)
-    openDialogUpdate(employee) {
-      this.isHideDialog = false;
+    async openDialogUpdate(employee) {
+      // this.isHideDialog = false;
+      await(this.isShowDialog = true);
       this.$refs.TheDialog.isHideBtnSave = true;
       this.$refs.TheDialog.isHideBtnUpdate = false;
       this.$refs.TheDialog.isHideErrorDepartment = true;
@@ -189,7 +192,8 @@ export default {
     // đóng dialog và load lại data
     // CreatedBy: NTANH (22/01/2021)
     closeDialog(){
-      this.isHideDialog = true;
+      // this.isHideDialog = true;
+      this.isShowDialog= false;
       this.loadData();
     },
 
@@ -374,7 +378,7 @@ export default {
             numberDuplicate ++;
           }
         });
-        console.log(numberDuplicate);
+        // console.log(numberDuplicate);
         if(func=='insert'){
           if(numberDuplicate > 0)
             return false;
