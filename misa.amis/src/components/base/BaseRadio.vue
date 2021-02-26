@@ -70,7 +70,6 @@ methods: {
   width: 20px;
   background-color: #eee;
   border-radius: 50%;
-  /* background: url('../../assets/img/radio-checked.png'); */
 }
 
 /* On mouse-over, add a grey background color */
@@ -94,14 +93,4 @@ methods: {
 .container input:checked ~ .checkmark:after {
   display: block; 
 }
-
-/* Style the indicator (dot/circle) */
-/* .container .checkmark:after {
-  top: 9px;
-	left: 9px;
-	width: 12px;
-	height: 12px;
-	border-radius: 50%;
-	background: white;
-} */
 </style>

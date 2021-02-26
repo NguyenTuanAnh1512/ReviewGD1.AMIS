@@ -3,7 +3,10 @@
     <div id="popup-model"></div>
     <div id="popup">
       <div class="popup-msg">
-        <div class="popup-msg-icon"></div>
+        <div 
+          class="popup-msg-icon"
+          :class="abc"
+        ></div>
         <div class="popup-msg-text">{{ msg }}</div>
       </div>
       <div class="popup-confirm">
@@ -24,6 +27,7 @@ export default {
   name: 'BasePopup',
   props: {
     isHideBasePopup: Boolean,
+    abc: String,
   },
   components: {
     BaseButton,
