@@ -7,7 +7,7 @@
       <input 
         type="radio" name="radio"
         :value="data.value"
-        v-model="checked"
+        v-model="choosed"
         @click="changeRadio(data.value)"
       >
       <span class="checkmark"></span>
@@ -24,11 +24,8 @@ props: {
 },
 data() {
   return {
-    checked: 1,
+    
   }
-},
-mounted() {
-  this.checked = this.choosed;
 },
 
 methods: {
@@ -41,11 +38,13 @@ methods: {
 </script>
 
 <style scoped>
+
 .container {
   display: inline-block;
   position: relative;
-  padding-left: 35px;
+  padding-left: 25px;
   margin-bottom: 12px;
+  margin-right: 20px;
   cursor: pointer;
   font-size: 13px;
   -webkit-user-select: none;
@@ -59,6 +58,7 @@ methods: {
   position: absolute;
   opacity: 0;
   cursor: pointer;
+  margin-left: 20px;
 }
 
 /* Create a custom radio button */

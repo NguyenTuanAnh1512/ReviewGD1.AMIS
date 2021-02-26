@@ -55,22 +55,13 @@
             </div>
             <div class="wrap-input">
               <label for="gender">Giới tính</label><br>
-              <BaseRadio 
+              <BaseRadio
+                id="gender"
                 :datas='dataRadio'
                 :choosed='parseInt(this.employee.Gender)'
                 @changeRadio="changeRadio"
+                ref="BaseRadio"
               />
-              <input 
-                type="radio" name="gender" value="1" class="input" 
-                v-model="employee.Gender"
-                tabindex="3"
-              > <span class="text-gender">Nam</span>
-              
-              <input 
-                type="radio" name="gender" value="0" class="input" 
-                v-model="employee.Gender"
-                tabindex="3"
-              > <span class="text-gender">Nữ</span>
             </div>
           </div>
         </div>
@@ -338,6 +329,10 @@ export default {
     }
   },
   methods: {
+    loadRadio() {
+      this.$refs.BaseRadio.checked = this.employee.Gender;
+    },
+
     changeRadio(val) {
       this.employee.Gender = val;
     },
@@ -744,6 +739,12 @@ label {
 .input[name="identifyNumber"] {
   width: 244px;
   margin-right: 6px;
+}
+
+#gender {
+  /* background-color: green; */
+  margin-top: 13px;
+  margin-left: 20px;
 }
 
 label[for="gender"] {
